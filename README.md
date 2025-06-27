@@ -23,5 +23,20 @@ Just paste a YouTube link, and get a smart, clean summary instantly.
    ```bash
    git clone https://github.com/Rahul-Y-Kumar/YouTube-Video-Summarizer
    ```
-   cd YouTube-Video-Summarizer
-2. 
+
+2.**Install Dependencies:** 
+  ```bash
+   pip install -r requirements.txt
+   ```
+
+3.**Add Your API Key:**
+  ```bash
+   GEMINI_API_KEY=your_gemini_api_key_here
+   ```
+4.**Run The App:**
+  ```bash
+   app.py
+   ```
+ Visit: http://localhost:5000 in your browser.
+## Note:
+Get your API Key from: https://aistudio.google.com
