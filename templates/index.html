@@ -1,0 +1,146 @@
+<<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Video Summarizer</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1s ease;
+    }
+
+    .container {
+      background: #fff;
+      padding: 2.5em 3em;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 1em;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+
+    input[type="text"] {
+      padding: 0.8em;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      font-size: 1em;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #6c63ff;
+      outline: none;
+    }
+
+    button {
+      padding: 0.8em;
+      background: #6c63ff;
+      color: #fff;
+      font-size: 1em;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #574fd6;
+    }
+
+    .summary {
+      margin-top: 2em;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 1em;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: none;
+      font-size: 1em;
+      background-color: #f9f9f9;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #ccc;
+      border-top: 5px solid #6c63ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 2em auto;
+      display: none;
+    }
+
+    .footer {
+      margin-top: 2em;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 1em;
+      border-radius: 12px;
+      font-size: 0.9em;
+      color: #333;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <script>
+    function showSpinner() {
+      document.getElementById('spinner').style.display = 'block';
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 YouTube Summarizer</h1>
+    <form method="POST" onsubmit="showSpinner()">
+      <input type="text" name="url" placeholder="Paste YouTube URL here..." required>
+      <button type="submit">Summarize Video</button>
+    </form>
+
+    <div id="spinner" class="spinner"></div>
+
+    {% if summary %}
+    <div class="summary">
+      <h2>📝 Video Summary</h2>
+      <textarea rows="10" readonly>{{ summary }}</textarea>
+    </div>
+    {% endif %}
+
+    <div class="footer">
+      Developed by Rahul Y Kumar👨🏻‍💻
+    </div>
+  </div>
+</body>
+</html>
